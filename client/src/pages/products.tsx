@@ -40,13 +40,13 @@ export default function Products() {
   const clearFilters = () => {
     setFilters({
       search: '',
-      category: '',
-      province: '',
-      saleMode: '',
+      category: 'all',
+      province: 'all', 
+      saleMode: 'all',
     });
   };
 
-  const activeFiltersCount = Object.values(filters).filter(value => value !== '').length;
+  const activeFiltersCount = Object.values(filters).filter(value => value !== '' && value !== 'all').length;
 
   if (isLoading) {
     return (
@@ -122,7 +122,7 @@ export default function Products() {
                     <SelectValue placeholder="Toutes les catégories" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Toutes les catégories</SelectItem>
+                    <SelectItem value="all">Toutes les catégories</SelectItem>
                     {categories?.map((category: string) => (
                       <SelectItem key={category} value={category}>
                         {category}
@@ -143,7 +143,7 @@ export default function Products() {
                     <SelectValue placeholder="Toutes les provinces" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Toutes les provinces</SelectItem>
+                    <SelectItem value="all">Toutes les provinces</SelectItem>
                     {provinces?.map((province: string) => (
                       <SelectItem key={province} value={province}>
                         {province}
@@ -164,7 +164,7 @@ export default function Products() {
                     <SelectValue placeholder="Tous les modes" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Tous les modes</SelectItem>
+                    <SelectItem value="all">Tous les modes</SelectItem>
                     <SelectItem value="direct">Vente directe</SelectItem>
                     <SelectItem value="contact">Mise en relation</SelectItem>
                   </SelectContent>

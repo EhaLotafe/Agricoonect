@@ -30,7 +30,7 @@ export default function Home() {
     const params = new URLSearchParams();
     
     if (searchQuery) params.append("search", searchQuery);
-    if (selectedProvince) params.append("province", selectedProvince);
+    if (selectedProvince && selectedProvince !== "all") params.append("province", selectedProvince);
     
     if (params.toString()) {
       searchUrl += "?" + params.toString();
@@ -68,7 +68,7 @@ export default function Home() {
                     <SelectValue placeholder="Toutes les régions" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Toutes les régions</SelectItem>
+                    <SelectItem value="all">Toutes les régions</SelectItem>
                     {provinces?.map((province: string) => (
                       <SelectItem key={province} value={province}>
                         {province}
