@@ -69,7 +69,7 @@ export default function Home() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">Toutes les régions</SelectItem>
-                    {provinces?.map((province: string) => (
+                    {Array.isArray(provinces) && provinces.map((province: string) => (
                       <SelectItem key={province} value={province}>
                         {province}
                       </SelectItem>
@@ -198,7 +198,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts?.slice(0, 4).map((product: any) => (
+            {Array.isArray(featuredProducts) && featuredProducts.slice(0, 4).map((product: any) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

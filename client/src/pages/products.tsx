@@ -75,7 +75,7 @@ export default function Products() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">Produits Agricoles</h1>
         <p className="text-gray-600">
-          Découvrez {products?.length || 0} produits frais de nos agriculteurs locaux
+          Découvrez {Array.isArray(products) ? products.length : 0} produits frais de nos agriculteurs locaux
         </p>
       </div>
 
@@ -123,7 +123,7 @@ export default function Products() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">Toutes les catégories</SelectItem>
-                    {categories?.map((category: string) => (
+                    {Array.isArray(categories) && categories.map((category: string) => (
                       <SelectItem key={category} value={category}>
                         {category}
                       </SelectItem>
@@ -144,7 +144,7 @@ export default function Products() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">Toutes les provinces</SelectItem>
-                    {provinces?.map((province: string) => (
+                    {Array.isArray(provinces) && provinces.map((province: string) => (
                       <SelectItem key={province} value={province}>
                         {province}
                       </SelectItem>
@@ -187,7 +187,7 @@ export default function Products() {
 
         {/* Products Grid */}
         <div className="lg:col-span-3">
-          {products && products.length > 0 ? (
+          {Array.isArray(products) && products.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product: any) => (
                 <ProductCard key={product.id} product={product} />
